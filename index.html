@@ -74,11 +74,13 @@
       letter-spacing: 0.15em;
       text-transform: uppercase;
       text-align: center;
-      padding: 10px 20px;
+      padding: 10px 16px;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 12px;
+      overflow: hidden;
+      white-space: nowrap;
     }
 
     /* NAVEGACIÓN */
@@ -108,6 +110,7 @@
     .brand img {
       width: 170px;
       height: 52px;
+      max-height: 48px;
       object-fit: contain;
     }
     .nav-links {
@@ -605,19 +608,31 @@
         display: none;
         position: fixed;
         inset: 86px 0 0;
-        background: var(--bg);
+        background: #FFF7FB;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 24px;
+        gap: 32px;
         font-size: 20px;
-        z-index: 99;
+        z-index: 9999;
+        padding: 24px 16px;
+        text-align: center;
+        line-height: 1.4;
+        overflow-y: auto;
+      }
+      .nav-links a {
+        padding: 12px 20px;
+        width: min(90vw, 280px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
       .nav-links.open { display: flex; }
       .menu-toggle { display: grid; }
       .sec-header { flex-direction: column; align-items: flex-start; }
       .visit-content { padding: 30px; }
       .hero { padding: 54px 0 62px; }
+      .hero h1 { font-size: clamp(40px, 10vw, 52px); }
       .hero-visual { min-height: 0; }
       .hero-card-img { width: min(78vw, 360px); }
       .step-card { padding: 24px; }
@@ -627,6 +642,19 @@
       .visit-img-wrap { min-height: 280px; }
       .bottom-banner{padding:12px 0 14px}
       .bottom-track span{font-size:8px;gap:11px;padding-right:16px}
+      .brand img { max-height: 44px; height: auto; width: auto; max-width: 170px; }
+      .footer-top { flex-direction: column; align-items: center; text-align: center; gap: 28px; }
+      .footer-links { flex-wrap: wrap; justify-content: center; gap: 20px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+    @media(max-width: 600px) {
+      .footer-links { flex-direction: column; align-items: center; gap: 16px; }
+      .brand img { max-height: 42px; }
+      .wrap { width: min(1280px, calc(100% - 32px)); }
+    }
+    @media(max-width: 480px) {
+      .announcement span:nth-child(3), .announcement span:nth-child(2) { display: none; }
+      .hero h1 { font-size: clamp(36px, 11vw, 44px); }
     }
 
     .hero-visual{animation:hero-drift 6.4s ease-in-out infinite}
