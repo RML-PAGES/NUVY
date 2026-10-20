@@ -99,7 +99,7 @@
     .nav-container {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: flex-start;
       width: 100%;
     }
     .brand {
@@ -108,45 +108,10 @@
       gap: 14px;
     }
     .brand img {
-      width: 170px;
+      width: auto;
       height: 52px;
-      max-height: 48px;
+      max-height: 45px;
       object-fit: contain;
-    }
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 36px;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text-main);
-    }
-    .nav-links a:not(.nav-btn):hover { color: var(--accent-pink); }
-    .nav-btn {
-      background: var(--accent-berry);
-      color: #fff;
-      padding: 12px 24px;
-      border-radius: var(--radius-pill);
-      font-weight: 700;
-      font-size: 12px;
-      letter-spacing: 0.05em;
-      transition: transform 0.25s var(--transition), background 0.25s;
-      box-shadow: 0 4px 20px rgba(106,27,50,0.2);
-    }
-    .nav-btn:hover {
-      transform: translateY(-2px);
-      background: var(--accent-pink);
-    }
-    .menu-toggle {
-      display: none;
-      background: none;
-      border: 1px solid var(--border-subtle);
-      color: var(--text-main);
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      font-size: 20px;
-      place-items: center;
     }
 
     /* SECCIÓN HERO */
@@ -591,7 +556,7 @@
       gap: 15px;
     }
 
-    /* MENÚ MÓVIL Y RESPONSIVE */
+    /* RESPONSIVE */
     @media(max-width: 1024px) {
       .bento-1, .bento-2, .bento-3, .bento-4, .bento-5 { grid-column: span 12; }
       .steps-grid { grid-template-columns: 1fr; }
@@ -604,31 +569,6 @@
     }
 
     @media(max-width: 768px) {
-      .nav-links {
-        display: none;
-        position: fixed;
-        inset: 86px 0 0;
-        background: #FFF7FB;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 32px;
-        font-size: 20px;
-        z-index: 9999;
-        padding: 24px 16px;
-        text-align: center;
-        line-height: 1.4;
-        overflow-y: auto;
-      }
-      .nav-links a {
-        padding: 12px 20px;
-        width: min(90vw, 280px);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .nav-links.open { display: flex; }
-      .menu-toggle { display: grid; }
       .sec-header { flex-direction: column; align-items: flex-start; }
       .visit-content { padding: 30px; }
       .hero { padding: 54px 0 62px; }
@@ -642,14 +582,14 @@
       .visit-img-wrap { min-height: 280px; }
       .bottom-banner{padding:12px 0 14px}
       .bottom-track span{font-size:8px;gap:11px;padding-right:16px}
-      .brand img { max-height: 44px; height: auto; width: auto; max-width: 170px; }
+      .brand img { max-height: 42px; height: auto; width: auto; }
       .footer-top { flex-direction: column; align-items: center; text-align: center; gap: 28px; }
       .footer-links { flex-wrap: wrap; justify-content: center; gap: 20px; }
       .footer-bottom { flex-direction: column; text-align: center; }
     }
     @media(max-width: 600px) {
       .footer-links { flex-direction: column; align-items: center; gap: 16px; }
-      .brand img { max-height: 42px; }
+      .brand img { max-height: 40px; }
       .wrap { width: min(1280px, calc(100% - 32px)); }
     }
     @media(max-width: 480px) {
@@ -659,9 +599,34 @@
 
     .hero-visual{animation:hero-drift 6.4s ease-in-out infinite}
     @keyframes hero-drift{50%{transform:translateY(-8px)}}
+    .bubble {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.5;
+      filter: blur(0px);
+      pointer-events: none;
+      z-index: 0;
+      mix-blend-mode: multiply;
+    }
+    .bubble:nth-child(1){width:35px;height:35px;background:#fbcfe8;left:5%;top:15%;animation:float 6s ease-in-out infinite}
+    .bubble:nth-child(2){width:20px;height:20px;background:#f472b6;left:15%;top:45%;animation:float 7s ease-in-out infinite}
+    .bubble:nth-child(3){width:45px;height:45px;background:#fde047;left:25%;top:20%;animation:float 8s ease-in-out infinite}
+    .bubble:nth-child(4){width:25px;height:25px;background:#a7f3d0;left:35%;top:65%;animation:float 6.5s ease-in-out infinite}
+    .bubble:nth-child(5){width:40px;height:40px;background:#fbcfe8;left:50%;top:25%;animation:float 7.5s ease-in-out infinite}
+    .bubble:nth-child(6){width:15px;height:15px;background:#f472b6;left:65%;top:50%;animation:float 9s ease-in-out infinite}
+    .bubble:nth-child(7){width:55px;height:55px;background:#fde047;left:75%;top:15%;animation:float 7s ease-in-out infinite}
+    .bubble:nth-child(8){width:30px;height:30px;background:#a7f3d0;left:85%;top:60%;animation:float 8.5s ease-in-out infinite}
+    .bubble:nth-child(9){width:22px;height:22px;background:#fbcfe8;left:90%;top:30%;animation:float 6.8s ease-in-out infinite}
+    .bubble:nth-child(10){width:38px;height:38px;background:#f472b6;left:10%;top:70%;animation:float 7.8s ease-in-out infinite}
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) translateX(0px); }
+      25% { transform: translateY(-20px) translateX(10px); }
+      50% { transform: translateY(-40px) translateX(-5px); }
+      75% { transform: translateY(-15px) translateX(15px); }
+    }
     .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.8s var(--transition), transform 0.8s var(--transition); }
     .reveal.is-visible { opacity: 1; transform: translateY(0); }
-    @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;animation:none!important}}
   </style>
 </head>
 <body>
@@ -682,19 +647,13 @@
         <!-- Logotipo completo oficial con la extensión en mayúsculas (.PNG) -->
         <img src="nuvy-logo.png" alt="Logotipo oficial NÜVY Nieves &amp; Toppings">
       </a>
-      <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
-      <nav class="nav-links">
-        <a href="#ritual">El ritual</a>
-        <a href="#menu">La barra</a>
-        <a href="#visitanos">Visítanos</a>
-        <a href="#menu" class="nav-btn">Arma tu antojo</a>
-      </nav>
     </div>
   </header>
 
   <main>
     <!-- HERO -->
     <section class="hero" id="inicio">
+      <div class="bubble"></div><div class="bubble"></div><div class="bubble"></div><div class="bubble"></div><div class="bubble"></div><div class="bubble"></div><div class="bubble"></div><div class="bubble"></div><div class="bubble"></div><div class="bubble"></div>
       <div class="wrap hero-grid">
         <div class="hero-content reveal">
           <div class="hero-badge">✳ Algo rico está por pasar</div>
@@ -880,16 +839,7 @@
   </footer>
 
   <script>
-    const toggle = document.querySelector('.menu-toggle');
-    const nav = document.querySelector('.nav-links');
-    const toggleMenu = (open) => {
-      nav.classList.toggle('open', open);
-      document.body.classList.toggle('menu-open', open);
-      toggle.setAttribute('aria-expanded', String(open));
-      toggle.textContent = open ? '✕' : '☰';
-    };
-    toggle.addEventListener('click', () => toggleMenu(!nav.classList.contains('open')));
-    nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => toggleMenu(false)));
+    // Hamburger menu removed completely
 
     const buttons = document.querySelectorAll('.ing-btn');
     const output = document.querySelector('.builder-output');
